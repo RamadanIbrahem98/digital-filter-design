@@ -6,12 +6,6 @@ function setup() {
     let cvs = createCanvas(600, 600);
     cvs.style('display', 'block');
     cvs.parent('canvas');
-
-    background(255);
-    noFill()
-    ellipse(width/2, height/2, 2 * 250);
-    line(0, height/2, width, height/2);
-    line(width/2, 0, width/2, height);
   }
 
 function mousePressed() {
@@ -40,6 +34,11 @@ function mousePressed() {
 }
   
   function draw() {
+    background(255);
+    noFill()
+    ellipse(width/2, height/2, 2 * 250);
+    line(0, height/2, width, height/2);
+    line(width/2, 0, width/2, height);
     poles.forEach(pole => pole.show());
     zeros.forEach(zero => zero.show());
   }
