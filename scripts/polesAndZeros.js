@@ -29,14 +29,20 @@ function mousePressed() {
     if(blankSpace) {
         const createConjugate = document.getElementById('create-conjugate').checked;
         if(document.getElementById('new-pole').checked) {
+            let newPole = new Pole(mouseX, mouseY, createConjugate);
+            poles.push(newPole);
+        } else {
             let newZero = new Zero(mouseX, mouseY, createConjugate);
             zeros.push(newZero);
-        } else {
-            let newPole = new Pole(mouseX, mouseY, createConjugate);
-            zeros.push(newPole);
         }
     }
     blankSpace = true;
+    console.log(
+        {
+            "x: ": poles[poles.length-1].x,
+            "y: ": poles[poles.length-1].y,
+        }
+        )
 }
   
   function draw() {
