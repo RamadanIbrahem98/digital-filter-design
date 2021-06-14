@@ -77,7 +77,7 @@ class Point {
 
     show() {
         if(this.constructor == Point)
-            fill('#0F0');
+            throw new Error("This Class Cannot be instantiated")
         else if(this.constructor == Pole)
             fill('#DC3545');
         else
