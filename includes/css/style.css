@@ -12,3 +12,9 @@ body {
   /* This centers our sketch vertically. */
   align-items: center;
 }
+
+#mag {
+    width: 340px;
+    height: 220px;
+    margin: 24px auto;
+  }

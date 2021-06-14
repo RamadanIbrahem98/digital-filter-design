@@ -1,11 +1,16 @@
 const poles = []
 const zeros = []
-let blankSpace = true
+let blankSpace = true;
+let xaxis;
+let yaxis;
+
 
 function setup() {
     let cvs = createCanvas(600, 600);
     cvs.style('display', 'block');
     cvs.parent('canvas');
+    xaxis = width / 2;
+    yaxis = height / 2;
   }
 
 function mousePressed() {
@@ -22,11 +27,12 @@ function mousePressed() {
         }
     }
     if(blankSpace) {
-        if(document.getElementById('success-outlined').checked) {
-            let newZero = new Zero(mouseX, mouseY);
+        const createConjugate = document.getElementById('create-conjugate').checked;
+        if(document.getElementById('new-pole').checked) {
+            let newZero = new Zero(mouseX, mouseY, createConjugate);
             zeros.push(newZero);
         } else {
-            let newPole = new Pole(mouseX, mouseY);
+            let newPole = new Pole(mouseX, mouseY, createConjugate);
             zeros.push(newPole);
         }
     }
@@ -36,23 +42,34 @@ function mousePressed() {
   function draw() {
     background(255);
     noFill()
-    ellipse(width/2, height/2, 2 * 250);
-    line(0, height/2, width, height/2);
-    line(width/2, 0, width/2, height);
+
+    ellipse(xaxis, yaxis, 2 * 250);
+    line(0, yaxis, width, yaxis);
+    line(xaxis, 0, xaxis, height);
     poles.forEach(pole => pole.show());
     zeros.forEach(zero => zero.show());
   }
 
 class Point {
-    constructor(x, y) {
+    constructor(x, y, drawConjugate) {
         this.x = x;
         this.y = y;
         this.r = 3;
+        this.isConjugated = drawConjugate
+        if(this.isConjugated) {
+            this.xdash = this.x
+            this.ydash = 2 * yaxis - this.y
+        }
     }
 
     getDestance(currentX, currentY) {
         let distance = dist(currentX, currentY, this.x, this.y);
-        if(distance < this.r) {
+        let distance2 = Infinity
+        if(this.isConjugated) {
+            distance2 = dist(currentX, currentY, this.xdash, this.ydash);
+        }
+        
+        if(distance < this.r || distance2 < this.r) {
             return true;
         }
         return false;
@@ -66,17 +83,20 @@ class Point {
         else
             fill('#198754');
         ellipse(this.x, this.y, this.r * 2);
+        if(this.xdash) {
+            ellipse(this.xdash, this.ydash, this.r * 2)
+        }
     }
 }
 
 class Pole extends Point {
-    constructor(x, y) {
-        super(x, y);
+    constructor(x, y, drawConjugate) {
+        super(x, y, drawConjugate);
     }
 }
 
 class Zero extends Point {
-    constructor(x, y) {
-        super(x, y);
+    constructor(x, y, drawConjugate) {
+        super(x, y, drawConjugate);
     }
 }
