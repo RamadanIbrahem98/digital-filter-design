@@ -33,7 +33,7 @@ function setup() {
     for (let i = 0; i <= 3.14516; i = i + 0.01) {
         CircleNumbersX.push(Math.cos(i));
         CircleNumbersY.push(Math.sin(i));
-        TheX_Axis.push(i);
+        TheX_Axis.push(i.toFixed(3));
     }
 }
 
@@ -153,20 +153,22 @@ function GraphData() {
       }
       Distances = [];
       phases = [];
-      for (let i = 0; i < 315; i++) {
+    for (let i = 0; i < 315; i++) {
         if (zeros.length === 0) {
-          Distances.push(Distances3[i]);
-          phases.push(phases3[i]);
+            Distances.push(Distances3[i]);
+            phases.push(phases3[i]);
         }
         if (poles.length === 0) {
-          Distances.push(parseFloat(1 / Distances2[i]));
-          phases.push(phases2[i] * -1);
+            Distances.push(parseFloat(1 / Distances2[i]));
+            phases.push(phases2[i] * -1);
         }
         if (zeros.length !== 0 && poles.length !== 0) {
-          Distances.push(parseFloat(Distances3[i] / Distances2[i]));
-          phases.push(phases3[i] - phases2[i]);
+            Distances.push(parseFloat(Distances3[i] / Distances2[i]));
+            phases.push(phases3[i] - phases2[i]);
         }
-        }
+    }
+    mousePressed2();
+    mousePressed3();
 }
 
 function draw() {
