@@ -38,6 +38,10 @@ function setup() {
 }
 
 function mousePressed() {
+    if(mouseX > width || mouseY > height) 
+    {
+        return;
+    }
     for (let i = poles.length - 1; i >= 0; i--) {
         if (poles[i].getDestance(mouseX, mouseY)) {
             poles.splice(i, 1);
