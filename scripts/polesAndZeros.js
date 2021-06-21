@@ -51,6 +51,10 @@ function mousePressed() {
 
     ellipse(xaxis, yaxis, 2 * 250);
     line(0, yaxis, width, yaxis);
+    line(0, 0, width, 0);
+    line(0, 0, 0, height);
+    line(width, 0, width, height);
+    line(0, height, width, height);
     line(xaxis, 0, xaxis, height);
     poles.forEach(pole => pole.show());
     zeros.forEach(zero => zero.show());

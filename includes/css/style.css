@@ -18,3 +18,23 @@ body {
     height: 220px;
     margin: 24px auto;
   }
+
+#canvas {
+  display: inline-block;
+  margin-bottom: 100px;
+  margin-left: -50px;
+  /* margin-right: 100px; */
+}
+
+.btn-group {
+  margin-top: -800px;
+  /* margin-bottom: 100px; */
+}
+
+.All-Pass {
+  display: block;
+}
+
+.enable-conjugates {
+  display: block;
+}

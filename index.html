@@ -12,17 +12,38 @@
 </head>
 <body>
     <main>
-        <div id="canvas"></div>
-        <input type="radio" class="btn-check" name="options-outlined" id="new-pole" autocomplete="off" checked>
+        <div id="canvas" onmousemove=""></div>
+        <!-- <input type="radio" class="btn-check" name="options-outlined" id="new-pole" autocomplete="off" checked>
         <label class="btn btn-outline-success" for="new-pole">Add New Pole</label>
 
         <input type="radio" class="btn-check" name="options-outlined" id="new-zero" autocomplete="off">
-        <label class="btn btn-outline-danger" for="new-zero">Add New Zero</label>
-
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="create-conjugate" checked>
-            <label class="form-check-label" for="create-conjugate">Add Conjugates</label>
+        <label class="btn btn-outline-danger" for="new-zero">Add New Zero</label> -->
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <input type="radio" class="btn-check" name="options-outlined" id="new-pole" autocomplete="off" checked>
+            <label class="btn btn-outline-success" for="new-pole">Add New Pole</label>
+            <input type="radio" class="btn-check" name="options-outlined" id="new-zero" autocomplete="off">
+            <label class="btn btn-outline-danger" for="new-zero">Add New Zero</label>
+          
+            <div class="All-Pass" role="group">
+              <select id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <option value="..">All-Pass Filter</option>
+                <option value="0.5">0.5</option>
+                <option value="0.6">0.6</option>
+                <option value="0.7">0.7</option>
+                <option value="0.8">0.8</option>
+                <option value="0.9">0.9</option>
+                <option value="custom">Add Custom Filter</option>
+              </select>
+            </div>
+            <div class="form-check form-switch enable-conjugates">
+                <input class="form-check-input" type="checkbox" id="create-conjugate" checked>
+                <label class="form-check-label" for="create-conjugate">Add Conjugates</label>
+            </div>
         </div>
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+          </div>
     </main>
     <script src="scripts/polesAndZeros.js"></script>
 </body>
